@@ -1,10 +1,7 @@
-package Controller;
+package com.atelierjava.back.Controller;
 
-import Entity.CartDetails;
-import Entity.Product;
-import Repository.CartDetailsRepository;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import com.atelierjava.back.Entity.CartDetails;
+import com.atelierjava.back.Repository.CartDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

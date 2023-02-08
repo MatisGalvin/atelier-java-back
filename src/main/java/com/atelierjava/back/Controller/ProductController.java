@@ -1,7 +1,7 @@
-package Controller;
+package com.atelierjava.back.Controller;
 
-import Entity.Product;
-import Repository.ProductRepository;
+import com.atelierjava.back.Entity.Product;
+import com.atelierjava.back.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

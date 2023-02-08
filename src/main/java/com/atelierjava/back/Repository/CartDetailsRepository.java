@@ -1,6 +1,6 @@
-package Repository;
+package com.atelierjava.back.Repository;
 
-import Entity.CartDetails;
+import com.atelierjava.back.Entity.CartDetails;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CartDetailsRepository extends CrudRepository<CartDetails, Long> {
