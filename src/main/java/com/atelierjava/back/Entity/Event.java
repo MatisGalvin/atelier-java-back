@@ -11,7 +11,7 @@ import java.util.List;
 @Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

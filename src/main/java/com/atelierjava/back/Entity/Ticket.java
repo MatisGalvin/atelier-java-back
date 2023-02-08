@@ -1,28 +1,26 @@
 package com.atelierjava.back.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    String _ref;
+    private String _ref;
 
     @ManyToOne
-    Event event;
+    private Event event;
 
     @OneToOne
-    User user;
+    private User user;
 
 }

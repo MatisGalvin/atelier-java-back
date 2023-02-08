@@ -6,7 +6,7 @@ import lombok.*;
 @Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Artist {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
