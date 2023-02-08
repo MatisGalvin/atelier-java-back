@@ -25,4 +25,9 @@ public class UserController {
         }
         return null;
     }
+
+    @RequestMapping(path = "/users")
+    public Iterable<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }

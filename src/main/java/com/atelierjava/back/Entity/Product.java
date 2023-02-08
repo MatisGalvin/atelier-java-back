@@ -11,7 +11,7 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String nom ;
+    private String name ;
 
     private int price ;
 
