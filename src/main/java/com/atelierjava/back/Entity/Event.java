@@ -17,7 +17,7 @@ public class Event {
     private String name;
     private String place;
 
-    @ManyToOne
+    @ManyToMany
     private Artist artist;
 
     private int max_tickets;
