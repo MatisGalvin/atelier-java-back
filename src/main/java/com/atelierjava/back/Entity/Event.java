@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.CurrentTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Event {
@@ -18,7 +19,7 @@ public class Event {
     private String place;
 
     @ManyToMany
-    private Artist artist;
+    private List<Artist> artist;
 
     private int max_tickets;
 
