@@ -3,10 +3,7 @@ package com.atelierjava.back.Controller;
 import com.atelierjava.back.Entity.Event;
 import com.atelierjava.back.Repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -22,7 +19,7 @@ public class EventController {
     }
 
     @RequestMapping(path = "/event", method = RequestMethod.POST)
-    public Event addEvent(@RequestParam Event event) {
+    public Event addEvent(@RequestBody Event event) {
         return eventRepository.save(event);
     }
     
