@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 public class EventController {
 
@@ -22,5 +24,14 @@ public class EventController {
     @RequestMapping(path = "/event", method = RequestMethod.POST)
     public Event addEvent(@RequestParam Event event) {
         return eventRepository.save(event);
+    }
+    
+    @RequestMapping(path = "/event", method = RequestMethod.GET)
+    public Event getEventById(@RequestParam Long id){
+        Optional<Event> event = eventRepository.findById(id);
+        if(event.isPresent()){
+            return event.get();
+        }
+        return null;
     }
 }
