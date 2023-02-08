@@ -3,9 +3,7 @@ package com.atelierjava.back.Controller;
 import com.atelierjava.back.Entity.User;
 import com.atelierjava.back.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -29,5 +27,10 @@ public class UserController {
     @RequestMapping(path = "/users")
     public Iterable<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @RequestMapping(path = "/user", method = RequestMethod.POST)
+    public User createUser(@RequestBody User currentUser){
+        return userRepository.save(currentUser);
     }
 }
