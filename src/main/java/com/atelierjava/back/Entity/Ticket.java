@@ -19,7 +19,8 @@ public class Ticket {
 
     String _ref;
 
-    //TODO Rajouter le event_id
+    @ManyToOne
+    Event event;
 
     @OneToOne
     User user;
