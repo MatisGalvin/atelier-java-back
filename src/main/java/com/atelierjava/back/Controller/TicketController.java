@@ -10,19 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path="/ticket")
 public class TicketController {
 
     @Autowired
     TicketRepository ticketRepository;
 
 
-    @RequestMapping(path="/findAll")
+    @RequestMapping(path="/tickets")
     public Iterable<Ticket> findAll() {
         return ticketRepository.findAll();
     }
 
-    @RequestMapping(path="/findById")
+    @RequestMapping(path="/ticket")
     public Ticket findById(@RequestParam Long id) {
         Optional<Ticket> ticketOptional = ticketRepository.findById(id);
 

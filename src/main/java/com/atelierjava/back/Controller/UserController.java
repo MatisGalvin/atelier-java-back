@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/user")
 public class UserController {
 
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping(path = "/getById")
+    @RequestMapping(path = "/user")
     public User getById(@RequestParam Long id) {
         Optional<User> userOptional = userRepository.findById(id);
 

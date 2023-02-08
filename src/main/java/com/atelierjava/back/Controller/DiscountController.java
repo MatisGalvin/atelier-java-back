@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "discount")
 public class DiscountController {
 
     @Autowired
     DiscountRepository discountRepository;
 
-    @RequestMapping(path = "/getAll")
+    @RequestMapping(path = "/discounts")
     public Iterable<Discount> getAll() {
         return discountRepository.findAll();
     }
