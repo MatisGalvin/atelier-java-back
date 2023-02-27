@@ -31,6 +31,12 @@ public class BackApplication {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	CartRepository cartRepository;
+
+	@Autowired
+	CartDetailsRepository cartDetailsRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(BackApplication.class, args);
 	}
@@ -55,14 +61,31 @@ public class BackApplication {
 			discountRepository.save(Discount.builder().name("Simon Beddar").code("000010").amount(10).build());
 		}
 
+//		if(productRepository.count() == 0)
+//		{
+//			productRepository.save(Product.builder().name("T-shirt des Rolling Stones").price(2000).build());
+//			productRepository.save(Product.builder().name("Lunettes de Gilbert Montagné").price(2000).build());
+//			productRepository.save(Product.builder().name("Casquette Fête de la musique Édition 2023").price(2000).build());
+//			productRepository.save(Product.builder().name("American performer mustang - Fender").price(2000).build());
+//			productRepository.save(Product.builder().name("Lot de vinyl années 80").price(2000).build());
+//			productRepository.save(Product.builder().name("Enceinte portable Bose SoundLink").price(2000).build());
+//		}
+
+		Product tshirtRollingStone = new Product(1L, "T-shirt des Rolling Stones", 2000);
+		Product lunettesDeGilbertMontagné = new Product(2L, "Lunettes de Gilbert Montagné", 2000);
+		Product casquetteFeteMusique = new Product(3L, "Casquette Fête de la musique Édition 2023", 2000);
+		Product fender = new Product(4L, "American performer mustang - Fender", 2000);
+		Product lotVinyles = new Product(5L, "Lot de vinyl années 80", 2000);
+		Product enceinteBose = new Product(6L, "Enceinte portable Bose SoundLink", 2000);
+
 		if(productRepository.count() == 0)
 		{
-			productRepository.save(Product.builder().name("T-shirt des Rolling Stones").price(2000).build());
-			productRepository.save(Product.builder().name("Lunettes de Gilbert Montagné").price(2000).build());
-			productRepository.save(Product.builder().name("Casquette Fête de la musique Édition 2023").price(2000).build());
-			productRepository.save(Product.builder().name("American performer mustang - Fender").price(2000).build());
-			productRepository.save(Product.builder().name("Lot de vinyl années 80").price(2000).build());
-			productRepository.save(Product.builder().name("Enceinte portable Bose SoundLink").price(2000).build());
+			productRepository.save(tshirtRollingStone);
+			productRepository.save(lunettesDeGilbertMontagné);
+			productRepository.save(casquetteFeteMusique);
+			productRepository.save(fender);
+			productRepository.save(lotVinyles);
+			productRepository.save(enceinteBose);
 		}
 
 		if(artistRepository.count() == 0)
@@ -80,6 +103,36 @@ public class BackApplication {
 			userRepository.save(User.builder().firstname("Hugo").lastname("Scarbonchi").email("hugo.scarbonchi@epsi.fr").build());
 			userRepository.save(User.builder().firstname("Matis").lastname("Galvin").email("matis.galvin@epsi.fr").build());
 			userRepository.save(User.builder().firstname("Antonin").lastname("Simon").email("antonin.simon@epsi.fr").build());
+		}
+
+		User maxime = new User(1L,"Maxime", "Baudoin", "maxime.baudoin@epsi.fr");
+		User hugo = new User(2L,"Hugo", "Scarbonchi", "hugo.scarbonchi@epsi.fr");
+		User matis = new User(3L,"Matis", "Galvin", "matis.galvin@epsi.fr");
+		User antonin = new User(4L,"Antonin", "Simon", "ntonin.simon@epsi.fr");
+
+		if(userRepository.count() == 0)
+		{
+			userRepository.save(maxime);
+			userRepository.save(hugo);
+			userRepository.save(matis);
+			userRepository.save(antonin);
+		}
+
+		Cart cartMaxime = new Cart(1L, maxime);
+		Cart cartHugo = new Cart(2L, hugo);
+
+		if (cartRepository.count() == 0) {
+			cartRepository.save(cartMaxime);
+			cartRepository.save(cartHugo);
+		}
+
+		if (cartDetailsRepository.count() == 0) {
+			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(tshirtRollingStone).quantity(2).build());
+			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(casquetteFeteMusique).quantity(4).build());
+			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(fender).quantity(1).build());
+			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(enceinteBose).quantity(3).build());
+			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(lotVinyles).quantity(1).build());
+			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(lunettesDeGilbertMontagné).quantity(5).build());
 		}
 	}
 }

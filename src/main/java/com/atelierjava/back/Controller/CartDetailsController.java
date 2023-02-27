@@ -3,13 +3,13 @@ package com.atelierjava.back.Controller;
 import com.atelierjava.back.Entity.CartDetails;
 import com.atelierjava.back.Repository.CartDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 
 public class CartDetailsController {
+
+
 
         @Autowired
         CartDetailsRepository cartDetailsRepository;
@@ -17,6 +17,12 @@ public class CartDetailsController {
         @RequestMapping(path = "/cartDetails", method = RequestMethod.GET)
         public Iterable<CartDetails> getAllCartDetails(){
                 return cartDetailsRepository.findAll();
+        }
+
+        @RequestMapping(path = "/cartDetailsByUserId", method = RequestMethod.GET)
+        @CrossOrigin(origins = "http://localhost:3000")
+        public Iterable<CartDetails> cartDetailsByUserId(@RequestParam Long id){
+                return cartDetailsRepository.findByUserId(id);
         }
 
 
