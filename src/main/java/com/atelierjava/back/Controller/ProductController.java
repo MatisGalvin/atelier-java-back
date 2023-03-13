@@ -14,16 +14,8 @@ public class ProductController {
     ProductRepository productRepository;
 
     @RequestMapping(path = "/products", method = RequestMethod.GET)
-    public Iterable<Product> getAllProduct() {
+    public Iterable<Product> getAllProducts() {
         return productRepository.findAll();
-    }
-
-    @RequestMapping(path = "/product", method = RequestMethod.GET)
-    public Product findById(@RequestParam Long id) {
-        Optional<Product> product = productRepository.findById(id);
-
-        return product.orElse(null);
-
     }
 
     @RequestMapping(path = "/product", method = RequestMethod.POST)
@@ -31,15 +23,26 @@ public class ProductController {
         return productRepository.save(product);
     }
 
-
-    @RequestMapping(path = "/product", method = RequestMethod.DELETE)
-    public void deleteById(@RequestParam Long id) {
-        productRepository.deleteById(id);
+    @RequestMapping(path = "/product", method = RequestMethod.GET)
+    public Product findById(@RequestParam Long id) {
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isPresent()) {
+            return product.get();
+        }
+        return null;
     }
 
     @RequestMapping(path = "/product", method = RequestMethod.PATCH)
-    public Product updateById(@RequestBody Product product) {
+    public Product updateProductById(@RequestBody Product product) {
         return productRepository.save(product);
+    }
+
+    @RequestMapping(path = "product", method = RequestMethod.DELETE)
+    public void deleteProductById(@RequestParam Long id){
+        Optional<Product> productToDelete = productRepository.findById(id);
+        if(productToDelete.isPresent()){
+            productRepository.deleteById(id);
+        }
     }
 
 

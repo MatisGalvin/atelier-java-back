@@ -2,6 +2,8 @@ package com.atelierjava.back.Controller;
 
 import com.atelierjava.back.Entity.Event;
 import com.atelierjava.back.Repository.EventRepository;
+import com.atelierjava.back.Repository.ProductRepository;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,4 +34,18 @@ public class EventController {
         }
         return null;
     }
+
+    @RequestMapping(path = "/event", method = RequestMethod.PATCH)
+    public Event updateEventById(@RequestBody Event event){
+        return eventRepository.save(event);
+    }
+
+    @RequestMapping(path = "/event", method = RequestMethod.DELETE)
+    public void deleteEventById(@RequestParam Long id){
+        Optional<Event> eventToDelete = eventRepository.findById(id);
+        if(eventToDelete.isPresent()){
+            eventRepository.deleteById(id);
+        }
+    }
+
 }
