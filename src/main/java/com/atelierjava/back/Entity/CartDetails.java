@@ -17,6 +17,9 @@ public class CartDetails {
     @ManyToOne
     private Product product;
 
+    @ManyToOne
+    private Ticket ticket;
+
     private int quantity;
 
 
