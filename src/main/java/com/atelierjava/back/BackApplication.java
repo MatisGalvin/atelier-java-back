@@ -134,5 +134,8 @@ public class BackApplication {
 			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(lotVinyles).quantity(1).build());
 			cartDetailsRepository.save(CartDetails.builder().cart(cartMaxime).product(lunettesDeGilbertMontagné).quantity(5).build());
 		}
+
+		discountRepository.save(Discount.builder().code("SimonBedartCrazyPass").name("SimonBedartPass").amount(50).build());
+		discountRepository.save(Discount.builder().code("FestocheEntreCopains").name("Festoche").amount(20).build());
 	}
 }
