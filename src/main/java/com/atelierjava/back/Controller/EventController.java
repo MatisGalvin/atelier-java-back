@@ -41,11 +41,13 @@ public class EventController {
     }
 
     @RequestMapping(path = "/event", method = RequestMethod.DELETE)
-    public void deleteEventById(@RequestParam Long id){
+    public String deleteEventById(@RequestParam Long id){
         Optional<Event> eventToDelete = eventRepository.findById(id);
         if(eventToDelete.isPresent()){
             eventRepository.deleteById(id);
+            return "OK";
         }
+        return "Erreur lors de la suppression.";
     }
 
 }

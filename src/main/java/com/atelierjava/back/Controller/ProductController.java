@@ -24,7 +24,7 @@ public class ProductController {
     }
 
     @RequestMapping(path = "/product", method = RequestMethod.GET)
-    public Product findById(@RequestParam Long id) {
+    public Product findProductById(@RequestParam Long id) {
         Optional<Product> product = productRepository.findById(id);
         if(product.isPresent()) {
             return product.get();
@@ -38,11 +38,13 @@ public class ProductController {
     }
 
     @RequestMapping(path = "product", method = RequestMethod.DELETE)
-    public void deleteProductById(@RequestParam Long id){
+    public Boolean deleteProductById(@RequestParam Long id){
         Optional<Product> productToDelete = productRepository.findById(id);
         if(productToDelete.isPresent()){
             productRepository.deleteById(id);
+            return true;
         }
+        return false;
     }
 
 
