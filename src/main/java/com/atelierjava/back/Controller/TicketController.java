@@ -56,4 +56,14 @@ public class TicketController {
         }
         return false;
     }
+
+    @RequestMapping(path = "/removeTicketToCart", method = RequestMethod.DELETE)
+    public Boolean removeTicketToCart(@RequestParam Long ticketId) {
+        Optional<Ticket> ticketToDelete = ticketRepository.findById(ticketId);
+        if(ticketToDelete.isPresent()){
+            cartDetailsRepository.deleteCartDetailsByTicketId(ticketId);
+            return true;
+        }
+        return false;
+    }
 }
