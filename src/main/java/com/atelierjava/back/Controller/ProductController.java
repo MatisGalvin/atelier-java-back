@@ -67,5 +67,15 @@ public class ProductController {
         return false;
     }
 
+    @RequestMapping(path = "/removeProductToCart", method = RequestMethod.DELETE)
+    public Boolean removeProductToCart(@RequestParam Long productId) {
+        Optional<Product> productToDelete = productRepository.findById(productId);
+        if(productToDelete.isPresent()){
+            cartDetailsRepository.deleteCartDetailsByProductId(productId);
+            return true;
+        }
+        return false;
+    }
+
 
 }

@@ -11,4 +11,14 @@ public interface CartDetailsRepository extends CrudRepository<CartDetails, Long>
     @Modifying
     @Query("SELECT cd FROM CartDetails cd, Cart c WHERE cd.cart.id = c.id AND c.user.id = ?1")
     Iterable<CartDetails> findByUserId(Long ID);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM CartDetails WHERE product.id = ?1")
+    void deleteCartDetailsByProductId(Long ID);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM CartDetails WHERE ticket.id = ?1")
+    void deleteCartDetailsByTicketId(Long ID);
 }
