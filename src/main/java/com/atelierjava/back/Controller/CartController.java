@@ -15,9 +15,4 @@ public class CartController {
     @Autowired
     CartRepository cartRepository;
 
-    //@RequestMapping(path = "/cart/allByUser")
-    //public Iterable<Cart> allByUser(@RequestParam Long userId) {
-    //    cartRepository.fin
-    //}
-
 }
